@@ -19,11 +19,31 @@ class Verification:
         #column win condition
         for i in range(1,4):
             if 0<index[0]+i<=5 and table[index[0]+i][index[1]] == elem:
-                count += 1;
+                count += 1
                 if count == 3:
                     return(1)
             else:
-                count = 0;
+                count = 0
+                break
+
+        #line right win condition
+        for i in range(1,4):
+            if 0<=index[1]+i<=6 and table[index[0]][index[1]+i] == elem:
+                count += 1
+                if count == 3:
+                    return(1)
+            else:
+                count = 0
+                break
+         #line left win condition
+        for i in range(1,4):
+            if 0<=index[1]-i<=6 and table[index[0]][index[1]-i] == elem:
+                count += 1
+                if count == 3:
+                    return(1)
+            else:
+                count = 0
+                break
 
         
         return(0)
