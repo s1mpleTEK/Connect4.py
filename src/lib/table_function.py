@@ -13,7 +13,8 @@ class Table():
                     self.table[i][j] = " "
 
     def set_table(self):
-        return(self.table)
+        index = ["",""]
+        return(self.table, index)
 
     @classmethod
     def display_table(cls,table):

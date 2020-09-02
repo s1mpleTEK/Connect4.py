@@ -19,8 +19,9 @@ class User():
     def user_interaction(self, table, user):
         selec = input("Select the column where you want to play: ")
         if len(selec) == 1 and bool(re.match('^[1-7]*$', selec))==True:
-            if V.verification_table(int(selec), table):
-                return(T.table_update(int(selec), table, user))
+            index = V.verification_table(int(selec), table)
+            if index:
+                return(T.table_update(int(selec), table, user), index)
             else:
                 return(self.user_interaction(table, user))
         else:

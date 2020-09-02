@@ -6,16 +6,16 @@ def main():
     try:
         user = U().set_user()
         table = T().set_table()
-        T.display_table(table)
+        T.display_table(table[0])
         while 1:
             print(user[user[2]-1],"'s turn:", end=" ")
             if user[2] == 1:
                 print("O")
             else:
                 print("X")
-            table = U().user_interaction(table, user[2])
-            game_end = V.verification_game_end(table, user[2])
-            T.display_table(table)
+            table = U().user_interaction(table[0], user[2])
+            game_end = V.verification_game_end(table[0], user[2], table[1])
+            T.display_table(table[0])
             if game_end:
                 print(user[user[2]-1]," win the game.")
                 return(0)
