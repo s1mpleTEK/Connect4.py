@@ -15,7 +15,21 @@ class Table():
     def set_table(self):
         return(self.table)
 
-    def display_table(self,table):
+    @classmethod
+    def display_table(cls,table):
+        print("")
         for i in range (7):
             print(table[i])
+        print("")
         return
+    
+    @classmethod
+    def table_update(cls,input, table, user):
+        for i in range(5, -1, -1):
+            if table[i][input-1] == " ":
+                if user == 1:
+                    table[i][input-1] = "O"
+                    return(table)
+                elif user == 2:
+                    table[i][input-1] = "X"
+                    return(table)
