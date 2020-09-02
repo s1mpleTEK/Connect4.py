@@ -8,7 +8,11 @@ def main():
         table = T().set_table()
         T.display_table(table)
         while 1:
-            print(user[user[2]-1],"'s turn")
+            print(user[user[2]-1],"'s turn:", end=" ")
+            if user[2] == 1:
+                print("O")
+            else:
+                print("X")
             table = U().user_interaction(table, user[2])
             game_end = V.verification_game_end(table, user[2])
             T.display_table(table)
