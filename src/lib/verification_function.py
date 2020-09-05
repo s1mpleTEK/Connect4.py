@@ -25,25 +25,55 @@ class Verification:
             else:
                 count = 0
                 break
-
-        #line right win condition
+        #line win condition
         for i in range(1,4):
-            if 0<=index[1]+i<=6 and table[index[0]][index[1]+i] == elem:
+            #right line
+            if -1<index[1]+i<7 and table[index[0]][index[1]+i] == elem:
+                count += 1
+                if count == 3:
+                    return(1)
+            #left line
+            if -1<index[1]-i<7 and table[index[0]][index[1]-i] == elem:
                 count += 1
                 if count == 3:
                     return(1)
             else:
                 count = 0
                 break
-         #line left win condition
+        #digonal up left down right win condition
         for i in range(1,4):
-            if 0<=index[1]-i<=6 and table[index[0]][index[1]-i] == elem:
+            #up left
+            if -1<index[0]-i<6 and -1<index[1]-i<7 and table[index[0]-i][index[1]-i] == elem:
+                count += 1
+                if count == 3:
+                    return(1)
+            #down right
+            if -1<index[0]+i<6 and -1<index[1]+i<7 and table[index[0]+i][index[1]+i] == elem:
                 count += 1
                 if count == 3:
                     return(1)
             else:
                 count = 0
                 break
-
-        
+        #digonal up right down left win condition
+        for i in range(1,4):
+            #up right
+            if -1<index[0]-i<6 and -1<index[1]+i<7 and table[index[0]-i][index[1]+i] == elem:
+                count += 1
+                if count == 3:
+                    return(1)
+            #down left
+            if -1<index[0]+i<6 and -1<index[1]-i<7 and table[index[0]+i][index[1]-i] == elem:
+                count += 1
+                if count == 3:
+                    return(1)
+            else:
+                count = 0
+                break
+        #tie
+        for i in range(7):
+            if " " in table[i]:
+                return(0)
+            else:
+                return(2)
         return(0)
